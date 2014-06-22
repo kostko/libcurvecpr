@@ -142,7 +142,7 @@ int curvecpr_messager_recv (struct curvecpr_messager *messager, const unsigned c
             cf->ops.sendmarkq_remove_range(messager, start, end);
 
         /* If we're at EOF, see if we can move to a final state. */
-        struct curvecpr_block block;
+        struct curvecpr_block *block = NULL;
         if (messager->my_eof && cf->ops.sendmarkq_head(messager, &block) == -1)
             messager->my_final = 1;
     }
